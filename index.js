@@ -47,12 +47,14 @@ const booksRouter = require('./routes/books')(db);
 const authorsRouter = require('./routes/authors')(db);
 const categoriesRouter = require('./routes/categories')(db);
 const borrowingsRouter = require('./routes/borrowings')(db);
+const librarianRouter = require('./routes/librarian')(db);
 
 app.use('/api/users', usersRouter);
 app.use('/api/books', booksRouter);
 app.use('/api/authors', authorsRouter);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/borrowings', borrowingsRouter);
+app.use('/api/librarian', librarianRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
