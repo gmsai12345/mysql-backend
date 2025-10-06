@@ -116,6 +116,30 @@ CREATE TABLE borrowings (
 
 ---
 
+## Librarian & Management APIs
+
+### Authentication
+- `POST /api/librarian/login` — Librarian login (returns JWT token)
+
+### Role-based Access
+- Librarian endpoints require JWT token with `role: admin`
+
+### Planned Features (to be implemented)
+- Book request, approval, rejection, and status tracking
+- Inventory management (add/remove/update books, manage copies)
+- User management (block/unblock users, view user activity)
+- Request history and status tracking
+- (Optional) Notifications for requests/status changes
+
+### Example: Librarian Login
+```
+curl -X POST http://localhost:3000/api/librarian/login \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"admin@example.com","password":"adminpass"}'
+```
+
+---
+
 ## Recommendation System
 - Implemented in Python (`recommend.py`)
 - Uses collaborative filtering (cosine similarity) with pandas and scikit-learn
@@ -138,6 +162,13 @@ curl -X GET http://localhost:3000/api/books/recommend/1
 3. Configure `.env` for MySQL connection
 4. Start backend: `node index.js`
 5. Use API endpoints as documented above
+
+---
+
+## How to Use New APIs
+1. Login as librarian to get JWT token
+2. Use token in `Authorization` header for all librarian endpoints
+3. Access management features as documented above
 
 ---
 
